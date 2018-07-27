@@ -19,14 +19,11 @@
 
 \section{Introduction}
 \paragraph*{}
-The quality of a guitar amplifier can sometimes be gauged by how flat its 
-response is, ie. how flat the graph of the ratio of the amplified signal and 
-the input signal is. Being interested in both music and electronics, my 
-decision as to what I'd do for my internal assessment was clear - I'd measure 
-the frequency response of a small amplifier. Electrical engineers often ask 
-themselves the question of how well an amplifier performs. The frequency 
-response of the amplifier plays a big part in how good an amplifier is.
-
+Frequency response, ie. how flat the graph of the ratio of the amplified 
+signal and the input signal is, plays a great role in how good an amplifier is. 
+Being interested in both music and electronics, my decision as to what I'd do 
+for my physics internal assessment was clear - I'd measure the frequency 
+response of an amplifier.
 \paragraph*{}
 Frequency response is a measure of how much a certain circuit alters the 
 amplitude of an input sine signal with respect to the frequency of the signal 
@@ -35,9 +32,9 @@ is amplified by a constant value, independent of the frequency of the input
 signal. Usually, alteration of the frequency response is done with passive 
 filters. Even amplifiers that advertise themselves as flat use some sort of 
 filter to reduce noise or potential harmonic effects. The derivation for 
-the \textit{cut-off frequency}\footnote{Defined as the frequency at which the 
+the \textit{cutoff frequency}\footnote{Defined as the frequency at which the 
 amplitude of a signal is reduced by $3\si{dB}$, ie. the frequency at which the 
-power of the signal is approximately halved of a passive first stage filter.} 
+power of the signal is approximately halved by a passive first stage filter.} 
 is given in the following paragraph.
 
 \paragraph*{} 
@@ -49,7 +46,7 @@ This means that the current amplitude is $C \omega V_0$ and that it is offset
 by $\ang{90}$ with respect to the driving voltage. The amplitude (disregarding 
 phases) of the current is:
 $$I = C \omega V = \frac{V}{1 / (\omega C)}$$
-Given that $\omega = 2 \pi f$ it follows that:
+Given that $\omega = 2 \pi f$, it follows that:
 $$I = \frac{V}{1 /(2 \pi f C)}$$
 $$\frac{I}{V} = 2 \pi f C$$
 $$R = \frac{1}{2 \pi f C}$$
@@ -66,12 +63,17 @@ it passes the low frequencies (under the cutoff frequency), otherwise, if the
 resistor is connected to ground, the filter passes through higher frequencies.
 
 \paragraph*{}
-The \textit{MXR® MICRO AMP} (Jim Dunlop) is a small, simple $+26\si{dB}$ 
-guitar amplifier pedal, based on the \textit{TL061} (Texas Instruments) 
-operational amplifier. It is designed specifically not to change the tone of 
-the guitar, but instead to provide a clean, boosted signal. Its main 
-application is to have louder guitar solos, or to use it when using two 
-guitars of unequal output signal power (Jim Dunlop).
+The \textit{MXR® MICRO AMP} (Jim Dunlop) is a small  $+26\si{dB}$ guitar 
+amplifier pedal, based on the \textit{TL061} (Texas Instruments) operational 
+amplifier. It is designed specifically not to change the tone of the guitar, 
+but instead to provide a clean, boosted signal. Its main application is to 
+have louder guitar solos, or to use it when using two guitars of unequal 
+output signal power (Jim Dunlop). Note that this is not a guitar amplifier in 
+the sense that it is directly connected to a speaker, but rather a 
+``stompbox''\footnote{A term for guitar pedals} that increases the voltage of 
+the input signal, without increasing the power of the signal. It is impossible 
+to directly attach this amplifier to a cabinet\footnote{A technical term which 
+represents what can be thought of as a guitar speaker}.
 
 \paragraph*{}
 The schematic of the \textit{MXR® MICRO AMP} is given in figure 
@@ -112,11 +114,12 @@ $+4.5\si{V}$ for use in the amplifier section and a small ceramic capacitor
 \paragraph*{}
 The amplification section is centered around the $TL061$ operational 
 amplifier. $R_1$ is a pull-down resistor which serves as as a method of 
-discharging any residual charge that may have built up in $C_1$. $C_1$ is a 
-coupling capacitor which removes any DC bias. Through $R_2$, the signal is 
-offset by $+4.5\si{V}$ because the $TL061$ in this configuration only allows 
-for positive amplification. Offsetting the signal by $+4.5\si{V}$ allows for 
-bipolar amplification. $C_5$ couples the signal at the output.
+discharging any residual charge that may have built up in $C_1$, in order to 
+remove any potential ``popping'' sounds during the connection of the pedal. 
+$C_1$ is a coupling capacitor which removes any DC bias. Through $R_2$, the 
+signal is offset by $+4.5\si{V}$ because the $TL061$ in this configuration 
+only allows for positive amplification. Offsetting the signal by $+4.5\si{V}$ 
+allows for bipolar amplification. $C_5$ couples the signal at the output.
 
 \paragraph*{}
 $R_4$, $P$\footnote{$P$ is actually supposed to be a $500K\si{\ohm}$ 
@@ -139,7 +142,7 @@ this and from equation \ref{eqn:op-amp-gr-1}, it follows that:
 $$V_{in1} = V_{out} \cdot \frac{P + R_6}{P + R_4 + R_6}$$
 The gain $G_1$ is then:
 $$G_1 = 1 + \frac{R_4}{P + R_6}$$
-However, the resistors $R9$ and $R10$ behave as another voltage divider, 
+However, the resistors $R_9$ and $R_{10}$ behave as another voltage divider, 
 making the final gain $G$ between the input and the output of the pedal:
 $$G = (1 + \frac{R_4}{P + R_6}) \cdot \frac{R_{10}}{R_9 + R_{10}}$$
 For the values of the resistors used in the pedal, these calculate to:
@@ -147,15 +150,17 @@ $$G_{min} |_{P = 500k\si{\ohm}} = 1.06 \approx 1$$
 $$G_{max} |_{P = 0k\si{\ohm}} = 20.8$$
 
 \paragraph*{}
-$C1$, $R3$ and the $TLP061$ input impedance together build a high-pass filter, 
-whose cutoff frequency is calculated using equation \ref{eqn:cutoff-freq}:
-$$f_{C1} = \frac{1}{2 \pi C1 (R2 / (R3 + Z_{TL061-3})} = 1.59 \si{Hz}$$
+$C_1$, $R_3$ and the $TLP061$ input impedance\footnote{Given in the $TL061$ 
+datasheet (Texas Instruments).} together build a high-pass filter, whose 
+cutoff frequency is calculated using equation \ref{eqn:cutoff-freq}:
+$$f_{C_1} = \frac{1}{2 \pi C_1 (R_2 / (R_3 + Z_{TL061-3})} = 1.59 \si{Hz}$$
 It is obvious that this filtering has no effect on the audio, since the 
 frequency is inaudible.
 
 \paragraph*{}
 $C_2$, together with $R_4$, serves to filter out high harmonics that are 
-unnecessary, but do introduce noise to the op-amp:
+inaudible, but do introduce noise to the op-amp, potentially over-saturating 
+it:
 $$f_{C_2} = \frac{1}{2 \pi C_2 R_4} = 60.4\si{kHz}$$
 
 \paragraph*{}
@@ -166,15 +171,15 @@ $$f_{C_3} = \frac{1}{2 \pi C_3 (P + R_6)}$$
 $$f_{C_3 min} |_{P = 500\si{k\ohm}} = 6.74 \cdot 10^{-2} \si{Hz}$$
 $$f_{C_3 max} |_{P = 0\si{k\ohm}} = 12.5 \si{Hz}$$
 
-$C_5$ is the last capacitor which constitutes a filter. $R_{10}$ and $C_5$ 
-create a high-pass filter, whose cutoff frequency is:
+$C_5$ constitutes a very common high-pass filter in similar stompbox designs. 
+$R_{10}$ and $C_5$ create a high-pass filter, whose cutoff frequency is:
 $$f_{C_5} = \frac{1}{2 \pi C_5 R_{10}} = 10.6 \si{Hz}$$
 
 \paragraph*{}
 This amplifier pedal advertises itself as having a flat frequency response. 
 The research goal of this paper is to determine the frequency response of the 
 pedal. Other studies have determined that the frequency response is, indeed, 
-flat (``MXR Microamp Analysis'')
+flat (``MXR Microamp Analysis'').
 
 \section{Hypothesis}
 \paragraph*{}
@@ -203,11 +208,13 @@ This should not influence the frequency response in any significant manner.
 
 \paragraph*{}
 The assembled circuit was connected to a computer with sine-wave generating 
-capabilities. At the output it was connected to an oscilloscope, which was set 
+capabilities via a $3.5\si{mm}$ jack on the computer. At the output it was 
+connected to an oscilloscope, which was set 
 to automatically measure the data every two seconds. The recorded data was 
 then copied to a computer which did the data processing. A program on the 
 computer enabled the sine-wave frequency to be automatically increased by a 
-fixed value of $25Hz$.
+fixed value of $25Hz$\footnote{Available at: 
+\url{https://github.com/markovejnovic/freq-response-microamp/tree/master/src}}.
 
 \section{Data}
 
@@ -216,17 +223,19 @@ fixed value of $25Hz$.
 The oscilloscope recorded a total of $23376000$ different voltage points for 
 varying frequencies. Due to the sheer amount of raw data, it was only possible 
 to publish it online and it is available at the following link:
-%TODO Insert link to raw data
+\url{https://github.com/markovejnovic/freq-response-microamp/}.
 
 The uncertainty is not given online, however the oscilloscope specification 
-states that the voltage uncertainty is %TODO Figure that out
+(%TODO Cite
+) states that the voltage uncertainty is %TODO Figure that out
 
 \subsection{Data processing}
 \paragraph*{}
 For every frequency, the oscilloscope generated $4000$ individual voltage 
 points. Using a custom \textit{python}, \textit{matplotlib} and \textit{numpy} 
 program\footnote{
-	Available at %TODO
+Available at
+\url{https://github.com/markovejnovic/freq-response-microamp/tree/master/src}.
 }, a sinusoidal fit was achieved. An example of this is given in figure 
 \ref{fig:process1-example}.
 \begin{figure}[ht]
@@ -240,9 +249,11 @@ From this fit the amplitude was calculated.
 
 \paragraph*{}
 This has been achieved for all calculated frequencies. With the amplitudes 
-for different frequencies present, a final graph was plotted - the 
-relationship between the frequency and the amplitude of the signal, given in 
-figure \ref{fig:freq-response-v-lin}.
+for different frequencies present, a final graph was plotted\footnote{
+Again, available at: 
+\url{https://github.com/markovejnovic/freq-response-microamp/tree/master/src}}
+- the relationship between the frequency and the amplitude of the signal, 
+given in figure \ref{fig:freq-response-v-lin}.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{img/freq-response-v-lin}
@@ -280,7 +291,7 @@ verbatim in figure \ref{fig:freq-response-db-log-electrosmash}.
 \end{figure}
 The data they acquired differs somewhat than the one acquired in this study 
 in the range of $25\si{Hz}$-$80\si{Hz}$. It is somewhat difficult to pinpoint 
-the exact cause of the filtering present around $80\si{Hz}$, however, it can 
+the exact cause of the filtering present around $80\si{Hz}$, however, it could  
 be attributed to the fact that the circuit in this research was physically 
 assembled on a breadboard, which does possess some innate capacitance and 
 resistance in the connections between jumper cables and the breadboard holes.
@@ -315,27 +326,41 @@ band in which it operates.
 \newpage
 \section*{Works cited}
 \begin{hangparas}{.25in}{1}
-	Jim Dunlop. \textit{MXR® MICRO AMP}. 1984.
-
-	Texas Instruments. \textit{Tl06xx Low-Power JFET-Input Operational 
-	Amplifiers}. 1978.
-
-	Horowitz, Paul, and Winfield Hill. \textit{The Art Of Electronics}. 3rd ed., 
-	Cambridge, 2015.
-
-	"MXR Microamp Analysis". Electrosmash.com, 2018, 
-	\url{https://www.electrosmash.com/mxr-microamp}. Accessed 19 July 2018.
-
-	Python Software Foundation. \textit{Python Language Reference}, version 
-	3.6. http://www.python.org
-
 	Case, Alex. "Guitars". Recordingology.Com, 
 	\url{http://recordingology.com/in-the-studio/guitars/}. 
 	Accessed 26 July 2018.
 
+
+	Horowitz, Paul, and Winfield Hill. \textit{The Art Of Electronics}. 3rd ed., 
+	Cambridge, 2015.
+
+
+	Hunter, John D. \textit{``Matplotlib: A 2D Graphics Environment''}. 
+	Computing In Science \& Engineering, vol 9, no. 3, 2007, pp. 90-95. 
+	Institute Of Electrical And Electronics Engineers (IEEE), 
+	doi:10.1109/mcse.2007.55. Accessed 27 July 2018.
+
+	
+	Jim Dunlop. \textit{MXR® MICRO AMP}. 1984.
+
+
 	Jones E, Oliphant E, Peterson P, et al. \textit{SciPy: Open Source 
 	Scientific Tools for Python}. 2001-. \url{http://www.scipy.org/}. 
 	Accessed 26 July 2018.
+
+
+	"MXR Microamp Analysis". Electrosmash.com, 2018, 
+	\url{https://www.electrosmash.com/mxr-microamp}. Accessed 19 July 2018.
+
+
+	Python Software Foundation. \textit{Python Language Reference}, version 
+	3.6. http://www.python.org
+
+
+	Texas Instruments. \textit{Tl06xx Low-Power JFET-Input Operational 
+	Amplifiers}. 1978.
+
+
 \end{hangparas}
 
 \end{document}
